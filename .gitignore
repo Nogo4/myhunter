@@ -1,0 +1,8 @@
+unit
+prog
+*.gcda
+*.gcno
+*.o
+coverage
+.vscode
+*.a

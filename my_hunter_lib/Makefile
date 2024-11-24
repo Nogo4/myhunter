@@ -5,7 +5,7 @@
 ## Makefile for my_hunter project
 ##
 
-SRC =  
+SRC =
 
 OBJ = $(SRC:.c=.o)
 

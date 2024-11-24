@@ -10,12 +10,12 @@
 #include <SFML/Graphics.h>
 #include <stdlib.h>
 
-void manage_mouse_click(sfMouseButtonEvent event)
+static void manage_mouse_click(sfMouseButtonEvent event)
 {
     my_printf("Mouse x=%d y=%d\n", event.x, event.y);
 }
 
-void close_window(sfRenderWindow *window)
+static void close_window(sfRenderWindow *window)
 {
     sfRenderWindow_close(window);
 }
@@ -51,53 +51,11 @@ void window_loop(scene_params_t *name, sprite_params_t *sp_name)
         }
         sfRenderWindow_clear(name->window, sfBlack);
         sfSprite_setTextureRect(sp_name->sprite, sp_name->rect);
-        sfRenderWindow_drawSprite(name, sp_name->sprite, NULL);
+        sfRenderWindow_drawSprite(name->window, sp_name->sprite, NULL);
         sfRenderWindow_display(name->window);
         analyse_events(name->window, name->event);
     }
     sfRenderWindow_destroy(name->window);
-}
-
-int test(void)
-{
-    sfRenderWindow *window;
-    sfVideoMode video_mode;
-    sfEvent event;
-    sfTexture *texture;
-    sfSprite *sprite;
-    sfIntRect rect;
-    sfClock *clock;
-    sfTime time;
-    float seconds;
-
-    clock = sfClock_create();
-    rect.top = 0;
-    rect.left = 0;
-    rect.width = 110;
-    rect.height = 110;
-    texture = sfTexture_createFromFile("duck.png", NULL);
-    sprite = sfSprite_create();
-    video_mode.width = 800;
-    video_mode.height = 600;
-    video_mode.bitsPerPixel = 32;
-    window = sfRenderWindow_create(video_mode, "first window", sfDefaultStyle, NULL);
-    sfSprite_setTexture(sprite, texture, sfTrue);
-    while (sfRenderWindow_isOpen(window)) {
-        time = sfClock_getElapsedTime(clock);
-        seconds = time.microseconds / 1000000.0;
-        if (seconds > 0.1) {
-            move_rect(&rect, 110, 330);
-            sfClock_restart(clock);
-        }
-        sfRenderWindow_clear(window, sfBlack);
-        sfSprite_setTextureRect(sprite, rect);
-        sfRenderWindow_drawSprite(window, sprite, NULL);
-        sfRenderWindow_display(window);
-        analyse_events(window, event);
-    }
-    sfRenderWindow_destroy(window);
-    sfSprite_destroy(sprite);
-    return 0;
 }
 
 int main(void)
@@ -114,8 +72,8 @@ int main(void)
     main_scene->video_mode.width = 800;
     main_scene->video_mode.height = 600;
     main_scene->video_mode.bitsPerPixel = 32;
-    main_scene->window = sfRenderWindow_create(main_scene->video_mode, "Main scene", sfClose, NULL);
-
-
+    main_scene->window = sfRenderWindow_create(main_scene->video_mode,
+        "Main scene", sfClose, NULL);
+    sfSprite_setTexture(main_sprite->sprite, main_sprite->texture, sfTrue);
     window_loop(main_scene, main_sprite);
 }

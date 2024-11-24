@@ -1,3 +1,10 @@
+##
+## EPITECH PROJECT, 2024
+## Makefile
+## File description:
+## Makefile for my_hunter project
+##
+
 SRC = main.c
 
 OBJ = $(SRC:.c=.o)
@@ -15,6 +22,8 @@ CFLAGS += -l csfml-graphics
 CFLAGS += -l csfml-system
 CFLAGS += -l csfml-window
 CFLAGS += -l csfml-network
+CFLAGS += -Wextra
+CFLAGS += -Wall
 
 all:	$(NAME)
 
