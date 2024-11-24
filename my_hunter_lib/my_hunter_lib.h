@@ -9,17 +9,18 @@
     #define INCLUDED_MY_HUNTER_LIB_H
     #include <SFML/Graphics.h>
 
-    typedef struct scene_params {
-        sfRenderWindow *window;
-        sfVideoMode video_mode;
-        sfTime time;
-        sfClock *clock;
-        sfEvent event;
+typedef struct scene_params {
+    sfRenderWindow *window;
+    sfVideoMode video_mode;
+    sfTime time;
+    sfClock *clock;
+    sfEvent event;
+} scene_params_t;
 
-    } scene_params_t;
-    typedef struct sprite_params {
-        sfTexture *texture;
-        sfSprite *sprite;
-        sfIntRect rect;
-    }
+typedef struct sprite_params {
+    sfTexture *texture;
+    sfSprite *sprite;
+    sfIntRect rect;
+} sprite_params_t;
+
 #endif
