@@ -54,5 +54,6 @@ void set_rand_pos(all_data_t *name);
 void create_window(all_data_t *main_data);
 void create_bg(all_data_t *name);
 void anim_sprite(all_data_t *name, float seconds);
+void free_all(all_data_t *name);
 
 #endif

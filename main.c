@@ -53,8 +53,7 @@ void window_loop(all_data_t *dt_name)
             &mouse_pos, &rect_bound_f) == 0)
             set_rand_pos(dt_name);
     }
-    sfSprite_destroy(dt_name->sprite_name->sprite);
-    sfRenderWindow_destroy(dt_name->window_name->window);
+    free_all(dt_name);
 }
 
 void create_scene_with_sprite(void)

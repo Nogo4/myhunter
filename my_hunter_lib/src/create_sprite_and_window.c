@@ -11,25 +11,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-int random_pos(int x_y)
-{
-    int x_min = 0;
-    int x_max = 1000;
-    int y_min = 0;
-    int y_max = 600;
-    int value = 0;
-
-    if (x_y == 0) {
-        value = rand() % (x_max - x_min + 1) + x_min;
-        return value;
-    }
-    if (x_y == 1) {
-        value = rand() % (y_max - y_min + 1) + y_min;
-        return value;
-    }
-    return value;
-}
-
 void set_rand_pos(all_data_t *name)
 {
     sfVector2f pos = {random_pos(0), random_pos(1)};
@@ -60,12 +41,18 @@ void create_window(all_data_t *main_data)
         "My Hunter", sfClose, NULL);
 }
 
+void anim_sprite_one_by_one(sprite_params_t *name, float seconds,
+    all_data_t *name_dt)
+{
+    if (seconds > 0.1) {
+        move_rect(&name->rect, 110, 330);
+        sfClock_restart(name_dt->window_name->clock);
+    }
+}
+
 void anim_sprite(all_data_t *name, float seconds)
 {
     name->window_name->time = sfClock_getElapsedTime(name->window_name->clock);
     seconds = name->window_name->time.microseconds / 1000000.0;
-    if (seconds > 0.1) {
-        move_rect(&name->sprite_name->rect, 110, 330);
-        sfClock_restart(name->window_name->clock);
-    }
+    anim_sprite_one_by_one(name->sprite_name, seconds, name);
 }

@@ -42,3 +42,30 @@ int check_is_in_the_rec(scene_params_t *scene, positions_co_t *element_pose,
     }
     return 1;
 }
+
+int random_pos(int x_y)
+{
+    int x_min = 0;
+    int x_max = 1000;
+    int y_min = 0;
+    int y_max = 600;
+    int value = 0;
+
+    if (x_y == 0) {
+        value = rand() % (x_max - x_min + 1) + x_min;
+        return value;
+    }
+    if (x_y == 1) {
+        value = rand() % (y_max - y_min + 1) + y_min;
+        return value;
+    }
+    return value;
+}
+
+void free_all(all_data_t *name)
+{
+    sfSprite_destroy(name->sprite_name->sprite);
+    sfSprite_destroy(name->sprite_bg->sprite);
+    sfClock_destroy(name->window_name->clock);
+    sfRenderWindow_destroy(name->window_name->window);
+}
