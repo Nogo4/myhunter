@@ -5,7 +5,8 @@
 ## Makefile for my_hunter project
 ##
 
-SRC =
+SRC = src/script_game_loop_base.c \
+	  src/create_sprite_and_window.c \
 
 OBJ = $(SRC:.c=.o)
 
