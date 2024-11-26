@@ -25,7 +25,6 @@ CFLAGS += -l csfml-network
 CFLAGS += -Wextra
 CFLAGS += -Wall
 CFLAGS += -fsanitize=address
-CFLAGS += -g3
 
 all:	$(NAME)
 

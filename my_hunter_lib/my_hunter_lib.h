@@ -10,6 +10,7 @@
 #ifndef INCLUDED_MY_HUNTER_LIB_H
     #define INCLUDED_MY_HUNTER_LIB_H
     #define PATH_DUCK "duck.png"
+    #define PATH_BG "background.png"
 
 typedef struct scene_params {
     sfRenderWindow *window;
@@ -37,6 +38,7 @@ typedef struct linked_list {
 typedef struct all_data {
     scene_params_t *window_name;
     sprite_params_t *sprite_name;
+    sprite_params_t *sprite_bg;
     linked_list_t *lkl_name;
 } all_data_t;
 
@@ -46,8 +48,11 @@ void fill_mouse_pos(sfMouseButtonEvent event,
 void analyse_events(scene_params_t *scene, positions_co_t *mouse_pos);
 int check_is_in_the_rec(scene_params_t *scene, positions_co_t *element_pose,
     sfFloatRect *rect_bound_f);
-void destroy_sprite_out_of_window(sprite_params_t *sp_name);
-void create_and_add_in_list_sprite(int nb_sprite, all_data_t *name);
-void draw_and_anime_sprite(all_data_t *name);
+void move_rect(sfIntRect *rect, int offset, int max_value);
+int random_pos(int x_y);
+void set_rand_pos(all_data_t *name);
+void create_window(all_data_t *main_data);
+void create_bg(all_data_t *name);
+void anim_sprite(all_data_t *name, float seconds);
 
 #endif

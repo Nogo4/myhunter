@@ -9,6 +9,7 @@
 #include "../my_hunter_lib.h"
 #include <SFML/Graphics.h>
 #include <stdlib.h>
+#include <time.h>
 
 int random_pos(int x_y)
 {
@@ -29,44 +30,42 @@ int random_pos(int x_y)
     return value;
 }
 
-sprite_params_t *create_sprite(sprite_params_t *name)
+void set_rand_pos(all_data_t *name)
 {
-    sprite_params_t *next_sprite = malloc(sizeof(sprite_params_t));
     sfVector2f pos = {random_pos(0), random_pos(1)};
 
-    next_sprite->rect.top = 0;
-    next_sprite->rect.left = 0;
-    next_sprite->rect.width = 110;
-    next_sprite->rect.height = 110;
-    next_sprite->sprite = sfSprite_copy(name->sprite);
-    sfSprite_setPosition(next_sprite->sprite, pos);
-    return next_sprite;
+    sfSprite_setPosition(name->sprite_name->sprite, pos);
 }
 
-void create_sprite_list(linked_list_t **head, all_data_t *sprite)
+void create_bg(all_data_t *name)
 {
-    sprite->lkl_name->data = sprite->sprite_name;
-    sprite->lkl_name->next = *head;
-    *head = sprite->lkl_name;
+    name->sprite_bg = malloc(sizeof(sprite_params_t));
+    name->sprite_bg->rect.top = 0;
+    name->sprite_bg->rect.left = 0;
+    name->sprite_bg->rect.width = 1280;
+    name->sprite_bg->rect.height = 720;
+    name->sprite_bg->sprite = sfSprite_create();
+    sfSprite_setTexture(name->sprite_bg->sprite,
+        sfTexture_createFromFile(PATH_BG, NULL), sfTrue);
 }
 
-void create_and_add_in_list_sprite(int nb_sprite, all_data_t *name)
+void create_window(all_data_t *main_data)
 {
-    linked_list_t *head = NULL;
-    for (int i = 0; i != nb_sprite; i++) {
-        create_sprite_list(&head, name);
-    }
+    main_data->window_name = malloc(sizeof(scene_params_t));
+    main_data->window_name->video_mode.width = 1280;
+    main_data->window_name->video_mode.height = 720;
+    main_data->window_name->video_mode.bitsPerPixel = 32;
+    main_data->window_name->window =
+        sfRenderWindow_create(main_data->window_name->video_mode,
+        "My Hunter", sfClose, NULL);
 }
 
-void draw_and_anime_sprite(all_data_t *name)
+void anim_sprite(all_data_t *name, float seconds)
 {
-    sprite_params_t *data = NULL;
-
-    while (name->lkl_name != NULL) {
-        my_printf("dedans\n");
-        data = name->lkl_name->data;
-        sfSprite_setTextureRect(data->sprite, data->rect);
-        sfRenderWindow_drawSprite(name->window_name->window, data->sprite, NULL);
-        name->lkl_name = name->lkl_name->next;
+    name->window_name->time = sfClock_getElapsedTime(name->window_name->clock);
+    seconds = name->window_name->time.microseconds / 1000000.0;
+    if (seconds > 0.1) {
+        move_rect(&name->sprite_name->rect, 110, 330);
+        sfClock_restart(name->window_name->clock);
     }
 }
