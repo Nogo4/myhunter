@@ -54,7 +54,7 @@ void window_loop(all_data_t *dt_name, sfText *text)
         sfRenderWindow_drawText(dt_name->window_name->window, text, NULL);
         sfRenderWindow_display(dt_name->window_name->window);
     }
-    free_all(dt_name);
+    free_all(dt_name, text);
 }
 
 void create_scene_with_sprite(void)

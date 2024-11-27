@@ -59,10 +59,28 @@ int random_pos(int x_y)
     return value;
 }
 
-void free_all(all_data_t *name)
+void free_all(all_data_t *name, sfText *text)
 {
+    sfTexture_destroy((sfTexture *)sfSprite_getTexture(name->sprite_bg->sprite));
+    sfTexture_destroy((sfTexture *)sfSprite_getTexture(name->sprite_name->sprite));
+    sfTexture_destroy((sfTexture *)sfSprite_getTexture(name->hud->sprite_life1->sprite));
+    sfTexture_destroy((sfTexture *)sfSprite_getTexture(name->hud->sprite_life2->sprite));
+    sfTexture_destroy((sfTexture *)sfSprite_getTexture(name->hud->sprite_life3->sprite));
+    sfFont_destroy((sfFont *)sfText_getFont(text));
+    sfText_destroy(text);
+    sfSprite_destroy(name->hud->sprite_life1->sprite);
+    sfSprite_destroy(name->hud->sprite_life2->sprite);
+    sfSprite_destroy(name->hud->sprite_life3->sprite);
     sfSprite_destroy(name->sprite_name->sprite);
     sfSprite_destroy(name->sprite_bg->sprite);
     sfClock_destroy(name->window_name->clock);
     sfRenderWindow_destroy(name->window_name->window);
+    free(name->hud->sprite_life1);
+    free(name->hud->sprite_life2);
+    free(name->hud->sprite_life3);
+    free(name->hud);
+    free(name->sprite_bg);
+    free(name->sprite_name);
+    free(name->window_name);
+    free(name);
 }

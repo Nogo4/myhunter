@@ -31,11 +31,6 @@ typedef struct positions_co {
     float y;
 } positions_co_t;
 
-typedef struct linked_list {
-    sprite_params_t *data;
-    struct linked_list *next;
-} linked_list_t;
-
 typedef struct hud_player {
     int life;
     int score;
@@ -48,7 +43,6 @@ typedef struct all_data {
     scene_params_t *window_name;
     sprite_params_t *sprite_name;
     sprite_params_t *sprite_bg;
-    linked_list_t *lkl_name;
     hud_player_t *hud;
 } all_data_t;
 
@@ -65,7 +59,7 @@ void set_rand_pos(all_data_t *name);
 void create_window(all_data_t *main_data);
 void create_bg(all_data_t *name);
 void anim_sprite(all_data_t *name, float seconds);
-void free_all(all_data_t *name);
+void free_all(all_data_t *name, sfText *text);
 void create_hud_player(all_data_t *name);
 void draw_sprites(all_data_t *name_dt);
 void check_life(all_data_t *name);

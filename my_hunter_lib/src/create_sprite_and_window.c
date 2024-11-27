@@ -32,7 +32,6 @@ void create_bg(all_data_t *name)
 
 void create_window(all_data_t *main_data)
 {
-    main_data->window_name = malloc(sizeof(scene_params_t));
     main_data->window_name->video_mode.width = 1280;
     main_data->window_name->video_mode.height = 720;
     main_data->window_name->video_mode.bitsPerPixel = 32;

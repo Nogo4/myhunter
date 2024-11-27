@@ -15,7 +15,6 @@ void set_main_data(all_data_t *main_data)
 {
     main_data->sprite_name = malloc(sizeof(sprite_params_t));
     main_data->window_name = malloc(sizeof(scene_params_t));
-    main_data->lkl_name = malloc(sizeof(linked_list_t));
     main_data->sprite_name->rect.top = 0;
     main_data->sprite_name->rect.left = 0;
     main_data->sprite_name->rect.width = 110;
