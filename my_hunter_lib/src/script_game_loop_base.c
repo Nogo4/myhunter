@@ -10,16 +10,18 @@
 #include <SFML/Graphics.h>
 #include <stdlib.h>
 
-void do_must_task_in_loop(all_data_t *name_dt, positions_co_t *element_pos,
-    sfVector2f *vector, float seconds)
+void do_must_task_in_loop(all_data_t *name_dt,
+    positions_co_t *element_pos, float seconds)
 {
+    sfVector2f vector = {2.25, 0.0};
+
     sfRenderWindow_clear(name_dt->window_name->window, sfBlack);
     anim_sprite(name_dt, seconds);
     draw_sprites(name_dt);
     analyse_events(name_dt->window_name, element_pos);
     check_duck_pos(name_dt);
     check_life(name_dt);
-    sfSprite_move(name_dt->sprite_name->sprite, *vector);
+    sfSprite_move(name_dt->sprite_name->sprite, vector);
 }
 
 void fill_mouse_pos(sfMouseButtonEvent event,

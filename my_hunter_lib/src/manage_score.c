@@ -11,18 +11,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-int count_power_score(int power)
-{
-    int exp = 1;
-
-    while (power > 10) {
-        power /= 10;
-        exp++;
-    }
-    return exp;
-}
-
-void fill_score_char(all_data_t *name, char *str)
+void score_upper_zero(all_data_t *name, char *str)
 {
     int score = name->hud->score;
     int power = 10;
@@ -43,5 +32,13 @@ void fill_score_char(all_data_t *name, char *str)
         power /= 10;
         i--;
         index_str++;
+    }
+}
+
+void fill_score_char(all_data_t *name, char *str)
+{
+    if (name->hud->score >= 1) {
+        score_upper_zero(name, str);
+        return;
     }
 }

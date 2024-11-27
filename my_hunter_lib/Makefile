@@ -14,6 +14,7 @@ SRC = src/script_game_loop_base.c \
 	  src/manage_score.c \
 	  src/script_duck_shot.c \
 	  src/set_main_data.c \
+	  src/my_strcpr.c \
 
 OBJ = $(SRC:.c=.o)
 

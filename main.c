@@ -36,7 +36,6 @@ void move_rect(sfIntRect *rect, int offset, int max_value)
 void window_loop(all_data_t *dt_name, sfText *text)
 {
     float seconds = 0;
-    sfVector2f vector = {2.25, 0.0};
     sfFloatRect rect_bound_f =
         sfSprite_getGlobalBounds(dt_name->sprite_name->sprite);
     positions_co_t mouse_pos = {0};
@@ -45,7 +44,7 @@ void window_loop(all_data_t *dt_name, sfText *text)
     dt_name->window_name->clock = sfClock_create();
     while (sfRenderWindow_isOpen(dt_name->window_name->window)) {
         srand(time(NULL));
-        do_must_task_in_loop(dt_name, &mouse_pos, &vector, seconds);
+        do_must_task_in_loop(dt_name, &mouse_pos, seconds);
         rect_bound_f =
             sfSprite_getGlobalBounds(dt_name->sprite_name->sprite);
         if (check_is_in_the_rec(dt_name->window_name,
@@ -80,7 +79,17 @@ void create_scene_with_sprite(void)
     window_loop(main_data, text);
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
-    create_scene_with_sprite();
+    if (argc == 1) {
+        create_scene_with_sprite();
+        return 0;
+    }
+    if (argc == 2 && my_strcpr("-h", argv[1]) == 0) {
+        my_printf("This game is a aim game, the goal is shot the duck");
+        my_printf(" and get the best score has possible\n");
+        my_printf("The only entry is : ./my_hunter\n");
+        return 0;
+    }
+    return 84;
 }

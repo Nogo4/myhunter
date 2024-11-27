@@ -46,8 +46,8 @@ typedef struct all_data {
     hud_player_t *hud;
 } all_data_t;
 
-void do_must_task_in_loop(all_data_t *name_dt, positions_co_t *element_pos,
-    sfVector2f *vector, float seconds);
+void do_must_task_in_loop(all_data_t *name_dt,
+    positions_co_t *element_pos, float seconds);
 void fill_mouse_pos(sfMouseButtonEvent event,
     positions_co_t *element_pos);
 void analyse_events(scene_params_t *scene, positions_co_t *mouse_pos);
@@ -68,5 +68,6 @@ void fill_score_char(all_data_t *name, char *str);
 void actions_when_duck_is_shot(all_data_t *name, char *score_str,
     sfText *text);
 void set_main_data(all_data_t *main_data);
+int my_strcpr(char *str1, char *str2);
 
 #endif

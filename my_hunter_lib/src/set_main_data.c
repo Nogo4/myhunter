@@ -20,4 +20,5 @@ void set_main_data(all_data_t *main_data)
     main_data->sprite_name->rect.width = 110;
     main_data->sprite_name->rect.height = 110;
     main_data->sprite_name->sprite = sfSprite_create();
+    set_rand_pos(main_data);
 }
