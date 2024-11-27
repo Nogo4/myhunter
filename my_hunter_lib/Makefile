@@ -7,6 +7,13 @@
 
 SRC = src/script_game_loop_base.c \
 	  src/create_sprite_and_window.c \
+	  src/create_hud_player.c \
+	  src/draw_sprites.c \
+	  src/manage_life.c \
+	  src/check_duck_pos.c \
+	  src/manage_score.c \
+	  src/script_duck_shot.c \
+	  src/set_main_data.c \
 
 OBJ = $(SRC:.c=.o)
 

@@ -10,19 +10,16 @@
 #include <SFML/Graphics.h>
 #include <stdlib.h>
 
-void do_must_task_in_loop(all_data_t *name_dt, positions_co_t *element_pos)
+void do_must_task_in_loop(all_data_t *name_dt, positions_co_t *element_pos,
+    sfVector2f *vector, float seconds)
 {
     sfRenderWindow_clear(name_dt->window_name->window, sfBlack);
-    sfSprite_setTextureRect(name_dt->sprite_name->sprite,
-        name_dt->sprite_name->rect);
-    sfRenderWindow_drawSprite(name_dt->window_name->window,
-        name_dt->sprite_bg->sprite, NULL);
-    sfSprite_setTextureRect(name_dt->sprite_name->sprite,
-        name_dt->sprite_name->rect);
-    sfRenderWindow_drawSprite(name_dt->window_name->window,
-        name_dt->sprite_name->sprite, NULL);
-    sfRenderWindow_display(name_dt->window_name->window);
+    anim_sprite(name_dt, seconds);
+    draw_sprites(name_dt);
     analyse_events(name_dt->window_name, element_pos);
+    check_duck_pos(name_dt);
+    check_life(name_dt);
+    sfSprite_move(name_dt->sprite_name->sprite, *vector);
 }
 
 void fill_mouse_pos(sfMouseButtonEvent event,

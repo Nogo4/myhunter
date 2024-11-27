@@ -24,14 +24,14 @@ CFLAGS += -l csfml-window
 CFLAGS += -l csfml-network
 CFLAGS += -Wextra
 CFLAGS += -Wall
-CFLAGS += -fsanitize=address
+CFLAGS += -fsanitize=address -g3
 
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
 	make -C lib
 	make -C my_hunter_lib
-	gcc -o $(NAME) $(OBJ) $(LIB) $(CFLAGS)
+	gcc -g3 -o $(NAME) $(OBJ) $(LIB) $(CFLAGS)
 
 clean:
 	rm -f $(OBJ)
