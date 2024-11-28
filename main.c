@@ -88,7 +88,7 @@ int main(int argc, char **argv)
     if (argc == 2 && my_strcpr("-h", argv[1]) == 0) {
         my_printf("This game is a aim game, the goal is shot the duck");
         my_printf(" and get the best score has possible\n");
-        my_printf("The only entry is : ./my_hunter\n");
+        my_printf("The only entry is : the mouse\n");
         return 0;
     }
     return 84;
