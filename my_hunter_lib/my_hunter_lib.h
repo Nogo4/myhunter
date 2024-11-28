@@ -47,7 +47,7 @@ typedef struct all_data {
 } all_data_t;
 
 void do_must_task_in_loop(all_data_t *name_dt,
-    positions_co_t *element_pos, float seconds);
+    positions_co_t *element_pos, char *score_str);
 void fill_mouse_pos(sfMouseButtonEvent event,
     positions_co_t *element_pos);
 void analyse_events(scene_params_t *scene, positions_co_t *mouse_pos);

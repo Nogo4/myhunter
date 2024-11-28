@@ -38,7 +38,7 @@ void check_life(all_data_t *name)
         sfSprite_setPosition(name->hud->sprite_life1->sprite,
             pos_out_of_window);
     if (name->hud->life == -1) {
-        name->hud->score = -1;
+        name->hud->score = 0;
         name->hud->life = 3;
     }
 }

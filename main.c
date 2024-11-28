@@ -35,7 +35,6 @@ void move_rect(sfIntRect *rect, int offset, int max_value)
 
 void window_loop(all_data_t *dt_name, sfText *text)
 {
-    float seconds = 0;
     sfFloatRect rect_bound_f =
         sfSprite_getGlobalBounds(dt_name->sprite_name->sprite);
     positions_co_t mouse_pos = {0};
@@ -44,12 +43,13 @@ void window_loop(all_data_t *dt_name, sfText *text)
     dt_name->window_name->clock = sfClock_create();
     while (sfRenderWindow_isOpen(dt_name->window_name->window)) {
         srand(time(NULL));
-        do_must_task_in_loop(dt_name, &mouse_pos, seconds);
+        do_must_task_in_loop(dt_name, &mouse_pos, score_str);
         rect_bound_f =
             sfSprite_getGlobalBounds(dt_name->sprite_name->sprite);
         if (check_is_in_the_rec(dt_name->window_name,
             &mouse_pos, &rect_bound_f) == 0)
             actions_when_duck_is_shot(dt_name, score_str, text);
+        sfText_setString(text, score_str);
         sfRenderWindow_drawText(dt_name->window_name->window, text, NULL);
         sfRenderWindow_display(dt_name->window_name->window);
     }

@@ -20,7 +20,7 @@ OBJ = $(SRC:.c=.o)
 
 NAME = my_hunter_lib.a
 
-CFLAGS += -Wall -Wextra -g3
+CFLAGS += -Wall -Wextra
 
 all:	$(NAME)
 

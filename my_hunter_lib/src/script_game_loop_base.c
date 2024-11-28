@@ -10,12 +10,23 @@
 #include <SFML/Graphics.h>
 #include <stdlib.h>
 
-void do_must_task_in_loop(all_data_t *name_dt,
-    positions_co_t *element_pos, float seconds)
+static void set_score_string_at_zero(char *str)
 {
-    sfVector2f vector = {2.25, 0.0};
+    str[0] = '0';
+    str[1] = ' ';
+    str[2] = ' ';
+    str[3] = ' ';
+}
+
+void do_must_task_in_loop(all_data_t *name_dt,
+    positions_co_t *element_pos, char *score_str)
+{
+    sfVector2f vector = {4.00, 0.0};
+    float seconds = 0;
 
     sfRenderWindow_clear(name_dt->window_name->window, sfBlack);
+    if (name_dt->hud->score == 0)
+        set_score_string_at_zero(score_str);
     anim_sprite(name_dt, seconds);
     draw_sprites(name_dt);
     analyse_events(name_dt->window_name, element_pos);
