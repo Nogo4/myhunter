@@ -86,9 +86,10 @@ int main(int argc, char **argv)
         return 0;
     }
     if (argc == 2 && my_strcpr("-h", argv[1]) == 0) {
-        my_printf("This game is a aim game, the goal is shot the duck");
+        my_printf("This game is a aim game, the goal is : shot the duck");
         my_printf(" and get the best score has possible\n");
-        my_printf("The only entry is : the mouse\n");
+        my_printf("\nEntry :\n-h, print this message\n");
+        my_printf("\nExit :\n0, all is good\n84, an error occured\n");
         return 0;
     }
     return 84;
