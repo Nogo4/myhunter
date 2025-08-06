@@ -20,10 +20,7 @@ To compile the project, simply run the following command using the provided **Ma
 
 ### Running the Game
 
-Once compiled, run the program to start the game. Use the keyboard controls to move and shoot:
-
-- **Arrow Keys**: Move the character
-- **Spacebar**: Shoot
+Once compiled, run the program to start the game.
 
 Try to shoot the targets and avoid obstacles while keeping an eye on your score and remaining lives.
 
